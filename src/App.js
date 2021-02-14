@@ -1,57 +1,34 @@
-import React from 'react'
+import logo from './logo.svg';
 import './App.css';
-class field extends React.Component{
-  render (){
-    const{name,value,onChange}= this.props
-return <div className="form-group">
-  <label htmlFor={name}>le libele</label>
-  <input type="text" value={value} onChange={onChange} id={name} name={name} className="form-control"/>
-</div>
-  }
+import {Button,FormLabel,FormControl} from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import React , {Component} from 'react'
+
+class Form extends Component{
+
 }
-class App extends React.Component{
-  constructor(props){
-    super(props)
-    this.state={
-      nom: '',
-      prenom: '',
-      newsletter: '',
-    }
-    this.handleChange = this.handleChange.bind(this)
-  }
-  handleChange(e){
-    const name = e.target.name
-    const type = e.target.type
-    const value = type === 'checkbox' ? e.target.checked : e.target.value
-    this.setState({
-      [name]: value
-    })
-  }
-  render() {
-    console.log('render')
-    return <div  className="formulaire">
-      <div>
-        <label htmlFor="nom">Nom</label><br></br>
-        <input type="text" value={this.state.nom} onChange={this.handleChange} id="nom" name="nom"></input>
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <FormLabel >Nom</FormLabel>
+        <FormControl type="text" required></FormControl >
+        <FormLabel >Prenom</FormLabel>
+        <FormControl type="text" required></FormControl>
+        <FormLabel >Age</FormLabel>
+        <FormControl type="date" required></FormControl>
+        <FormLabel >Email</FormLabel>
+        <FormControl type="text" placeholder="****@gmail.com" pattern=".+@gmail.com" required></FormControl>
+        <FormLabel >Password</FormLabel>
+        <FormControl type="password" minLength="8" required></FormControl>
+        <br></br>
+        <Button variant='success' type="submit">Login</Button>
         
-      </div>
-      <div>
-        <label htmlFor="prenom">Prenom</label><br></br>
-        <input type="text" value={this.state.prenom} onChange={this.handleChange} id="prenom" name="prenom"></input>
         
-      </div>
-      
-      <div>
-        <label htmlFor="newsletter">S'abboner à Newsletter</label><br></br>
-        <input type="checkbox" value={this.state.newsletter} onChange={this.handleChange} id="newsletter" name="newsletter"></input>
-      
-      </div>
-      <div className="form-group">
-        <button class="btn btn-primary">Envoyer</button>
-      </div>
-      </div>
-    
-  }
+        
+      </header>
+    </div>
+  );
 }
 
 
